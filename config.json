@@ -1,0 +1,51 @@
+{
+    "name": "WeatherFlow to MQTT",
+    "description": "WeatherFlow to MQTT for Home Assistant",
+    "slug": "weatherflow2mqtt",
+    "url": "https://github.com/briis/hass-weatherflow2mqtt",
+    "image": "briis/weatherflow2mqtt",
+    "version": "3.1.0",
+    "arch": [
+        "armv7",
+        "aarch64",
+        "amd64"
+    ],
+    "startup": "application",
+    "boot": "auto",
+    "ports": {
+        "50222/udp": 50222
+    },
+    "ports_description": {
+        "50222/udp": "WeatherFlow socket"
+    },
+    "environment": {
+        "HA_SUPERVISOR": "True"
+    },
+    "homeassistant_api": true,
+    "services": [
+        "mqtt:want"
+    ],
+    "options": {},
+    "schema": {
+        "ELEVATION": "float?",
+        "LATITUDE": "float?",
+        "LONGITUDE": "float?",
+        "RAPID_WIND_INTERVAL": "int?",
+        "STATION_ID": "str?",
+        "STATION_TOKEN": "str?",
+        "FORECAST_INTERVAL": "int?",
+        "LANGUAGE": "list(en|da|de|fr)?",
+        "FILTER_SENSORS": "str?",
+        "INVERT_FILTER": "bool?",
+        "MQTT_HOST": "str?",
+        "MQTT_PORT": "port?",
+        "MQTT_USERNAME": "str?",
+        "MQTT_PASSWORD": "password?",
+        "MQTT_DEBUG": "bool?",
+        "WF_HOST": "str?",
+        "WF_PORT": "port?",
+        "DEBUG": "bool?",
+        "ZAMBRETTI_MIN_PRESSURE": "float?",
+        "ZAMBRETTI_MAX_PRESSURE": "float?"
+    }
+}

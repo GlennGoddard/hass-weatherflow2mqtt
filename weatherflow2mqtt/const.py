@@ -3,10 +3,10 @@ import datetime
 import os
 
 ATTRIBUTION = "Powered by WeatherFlow2MQTT"
-BRAND = "WeatherFlow"
+DOMAIN = "weatherflow2mqtt"
+MANUFACTURER = "WeatherFlow"
 
 ATTR_ATTRIBUTION = "attribution"
-ATTR_BRAND = "brand"
 ATTR_FORECAST_CONDITION = "condition"
 ATTR_FORECAST_PRECIPITATION = "precipitation"
 ATTR_FORECAST_PRECIPITATION_PROBABILITY = "precipitation_probability"
@@ -18,7 +18,7 @@ ATTR_FORECAST_WIND_BEARING = "wind_bearing"
 ATTR_FORECAST_WIND_SPEED = "wind_speed"
 ATTR_FORECAST_HUMIDITY = "humidity"
 
-EXTERNAL_DIRECTORY = os.environ.get("EXTERNAL_DIRECTORY", "/usr/local/config")
+EXTERNAL_DIRECTORY = os.environ.get("EXTERNAL_DIRECTORY", "/data")
 INTERNAL_DIRECTORY = "/app"
 STORAGE_FILE = f"{EXTERNAL_DIRECTORY}/.storage.json"
 DATABASE = f"{EXTERNAL_DIRECTORY}/weatherflow2mqtt.db"
@@ -108,45 +108,32 @@ COL_WINDLULL = "wind_lull"
 COL_WINDSPEED = "wind_speed_avg"
 COL_STRIKEENERGY = "lightning_strike_energy"
 COL_STRIKECOUNT = "lightning_strike_count_today"
-COL_PRESSURE= "sealevel_pressure"
+COL_PRESSURE = "sealevel_pressure"
 COL_UV = "uv"
 COL_SOLARRAD = "solar_radiation"
 
 BASE_URL = "https://swd.weatherflow.com/swd/rest"
 
+BATTERY_MODE_DESCRIPTION = [
+    "All sensors enabled and operating at full performance. Wind sampling interval every 3 seconds",
+    "Wind sampling interval set to 6 seconds",
+    "Wind sampling interval set to one minute",
+    "Wind sampling interval set to 5 minutes. All other sensors sampling interval set to 5 minutes. Haptic Rain sensor disabled from active listening",
+]
+
 DEFAULT_TIMEOUT = 10
+
 DEVICE_CLASS_BATTERY = "battery"
 DEVICE_CLASS_HUMIDITY = "humidity"
 DEVICE_CLASS_ILLUMINANCE = "illuminance"
-DEVICE_CLASS_PRESSURRE = "pressure"
+DEVICE_CLASS_PRESSURE = "pressure"
 DEVICE_CLASS_TEMPERATURE = "temperature"
 DEVICE_CLASS_TIMESTAMP = "timestamp"
 DEVICE_CLASS_VOLTAGE = "voltage"
 
-DEVICE_STATUS_MASKS = {
-        0b000000001: 'Lightning',
-        0b000000010: 'Lightning Noise',
-        0b000000100: 'Lightning Disturber',
-        0b000001000: 'Pressure',
-        0b000010000: 'Temperature',
-        0b000100000: 'Humidity',
-        0b001000000: 'Wind',
-        0b010000000: 'Precipitation',
-        0b100000000: 'Light/UV',
-        0x00008000: 'Power Booster Depleted',
-        0b00010000: 'Power Booster Shore Power'
-}
+STATE_CLASS_MEASUREMENT = "measurement"
+STATE_CLASS_INCREASING = "total_increasing"
 
-DOMAIN = "weatherflow2mqtt"
-
-EVENT_RAPID_WIND = "rapid_wind"
-EVENT_HUB_STATUS = "hub_status"
-EVENT_DEVICE_STATUS = "device_status"
-EVENT_AIR_DATA = "obs_air"
-EVENT_SKY_DATA = "obs_sky"
-EVENT_TEMPEST_DATA = "obs_st"
-EVENT_PRECIP_START = "evt_precip"
-EVENT_STRIKE = "evt_strike"
 EVENT_FORECAST = "weather"
 EVENT_HIGH_LOW = "high_low"
 
@@ -159,428 +146,26 @@ STRIKE_COUNT_TIMER = 3 * 60 * 60
 PRESSURE_TREND_TIMER = 3 * 60 * 60
 HIGH_LOW_TIMER = 10 * 60
 
+LANGUAGE_ENGLISH = "en"
+LANGUAGE_DANISH = "da"
+LANGUAGE_GERMAN = "de"
+LANGUAGE_FRENCH = "fr"
 SUPPORTED_LANGUAGES = [
-    "en",
-    "da",
-    "de",
-    "fr"
+    LANGUAGE_ENGLISH,
+    LANGUAGE_DANISH,
+    LANGUAGE_GERMAN,
+    LANGUAGE_FRENCH,
 ]
 
+TEMP_CELSIUS = "°C"
+TEMP_FAHRENHEIT = "°F"
 UNITS_IMPERIAL = "imperial"
+UNITS_METRIC = "metric"
 
 UTC = datetime.timezone.utc
 
-# Sensor ID, Sensor Name, Unit Metric, Unit Imperial, Device Class, Icon, Update Event, Extra Attributes, Show Min Values
-WEATHERFLOW_SENSORS = [
-    ["wind_speed", "Wind Speed", "m/s", "mph", None, "weather-windy", EVENT_RAPID_WIND, False, False],
-    ["wind_bearing", "Wind Bearing", "˚", "˚", None, "compass", EVENT_RAPID_WIND, False, False],
-    [
-        "wind_direction",
-        "Wind Direction",
-        None,
-        None,
-        None,
-        "compass-outline",
-        EVENT_RAPID_WIND,
-        False,
-        False
-    ],
-    [
-        "station_pressure",
-        "Station Pressure",
-        "hPa",
-        "inHg",
-        DEVICE_CLASS_PRESSURRE,
-        None,
-        EVENT_AIR_DATA,
-        False,
-        False
-    ],
-    [
-        "sealevel_pressure",
-        "Sea Level Pressure",
-        "hPa",
-        "inHg",
-        DEVICE_CLASS_PRESSURRE,
-        None,
-        EVENT_AIR_DATA,
-        True,
-        True
-    ],
-    [
-        "pressure_trend",
-        "Pressure Trend",
-        None,
-        None,
-        None,
-        "trending-up",
-        EVENT_AIR_DATA,
-        False,
-        False
-    ],
-    [
-        "air_temperature",
-        "Temperature",
-        "˚C",
-        "˚F",
-        DEVICE_CLASS_TEMPERATURE,
-        None,
-        EVENT_AIR_DATA,
-        True,
-        True
-    ],
-    [
-        "relative_humidity",
-        "Humidity",
-        "%",
-        "%",
-        DEVICE_CLASS_HUMIDITY,
-        None,
-        EVENT_AIR_DATA,
-        True,
-        True
-    ],
-    [
-        "lightning_strike_count",
-        "Lightning Count",
-        None,
-        None,
-        None,
-        "weather-lightning",
-        EVENT_AIR_DATA,
-        False,
-        False
-    ],
-    [
-        "lightning_strike_count_1hr",
-        "Lightning Count (Last hour)",
-        None,
-        None,
-        None,
-        "weather-lightning",
-        EVENT_AIR_DATA,
-        False,
-        False
-    ],
-    [
-        "lightning_strike_count_3hr",
-        "Lightning Count (3 hours)",
-        None,
-        None,
-        None,
-        "weather-lightning",
-        EVENT_AIR_DATA,
-        False,
-        False
-    ],
-    [
-        "lightning_strike_count_today",
-        "Lightning Count (Today)",
-        None,
-        None,
-        None,
-        "weather-lightning",
-        EVENT_AIR_DATA,
-        True,
-        False
-    ],
-    [
-        "battery_air",
-        "Voltage AIR",
-        "V",
-        "V",
-        DEVICE_CLASS_VOLTAGE,
-        None,
-        EVENT_AIR_DATA,
-        False,
-        False
-    ],
-    [
-        "battery_level_air",
-        "Battery AIR",
-        "%",
-        "%",
-        DEVICE_CLASS_BATTERY,
-        None,
-        EVENT_AIR_DATA,
-        False,
-        False
-    ],
-    [
-        "battery_level_sky",
-        "Battery SKY",
-        "%",
-        "%",
-        DEVICE_CLASS_BATTERY,
-        None,
-        EVENT_SKY_DATA,
-        False,
-        False
-    ],
-    [
-        "battery_level_tempest",
-        "Battery TEMPEST",
-        "%",
-        "%",
-        DEVICE_CLASS_BATTERY,
-        None,
-        EVENT_SKY_DATA,
-        False,
-        False
-    ],
-    [
-        "lightning_strike_distance",
-        "Lightning Distance",
-        "km",
-        "mi",
-        None,
-        "flash",
-        EVENT_AIR_DATA,
-        False,
-        False
-    ],
-    [
-        "lightning_strike_energy",
-        "Lightning Energy",
-        None,
-        None,
-        None,
-        "flash",
-        EVENT_AIR_DATA,
-        True,
-        False
-    ],
-    [
-        "lightning_strike_time",
-        "Last Lightning Strike",
-        None,
-        None,
-        DEVICE_CLASS_TIMESTAMP,
-        "clock-outline",
-        EVENT_AIR_DATA,
-        False,
-        False
-    ],
-    [
-        "illuminance",
-        "Illuminance",
-        "lx",
-        "lx",
-        DEVICE_CLASS_ILLUMINANCE,
-        None,
-        EVENT_SKY_DATA,
-        True,
-        False
-    ],
-    ["uv", "UV Index", "UVI", "UVI", None, "weather-sunny-alert", EVENT_SKY_DATA, True, False],
-    ["rain_today", "Rain Today", "mm", "in", None, "weather-pouring", EVENT_SKY_DATA, False, False],
-    [
-        "rain_yesterday",
-        "Rain Yesterday",
-        "mm",
-        "in",
-        None,
-        "weather-pouring",
-        EVENT_SKY_DATA,
-        False,
-        False
-    ],
-    ["rain_duration_today", "Rain Duration (Today)", "min", "min", None, "timeline-clock-outline", EVENT_SKY_DATA, True, False],
-    ["rain_duration_yesterday", "Rain Duration (Yesterday)", "min", "min", None, "timeline-clock-outline", EVENT_SKY_DATA, False, False],
-    [
-        "wind_lull",
-        "Wind Lull",
-        "m/s",
-        "mph",
-        None,
-        "weather-windy-variant",
-        EVENT_SKY_DATA,
-        True,
-        False
-    ],
-    [
-        "wind_speed_avg",
-        "Wind Speed Avg",
-        "m/s",
-        "mph",
-        None,
-        "weather-windy-variant",
-        EVENT_SKY_DATA,
-        True,
-        False
-    ],
-    ["wind_gust", "Wind Gust", "m/s", "mph", None, "weather-windy", EVENT_SKY_DATA, True, False],
-    ["wind_bearing_avg", "Wind Bearing Avg", "˚", "˚", None, "compass", EVENT_SKY_DATA, False, False],
-    [
-        "wind_direction_avg",
-        "Wind Direction Avg",
-        None,
-        None,
-        None,
-        "compass-outline",
-        EVENT_SKY_DATA,
-        False,
-        False
-    ],
-    ["battery", "Voltage SKY", "V", "V", DEVICE_CLASS_VOLTAGE, None, EVENT_SKY_DATA, False, False],
-    [
-        "solar_radiation",
-        "Solar Radiation",
-        "W/m^2",
-        "W/m^2",
-        None,
-        "solar-power",
-        EVENT_SKY_DATA,
-        True,
-        False
-    ],
-    [
-        "precipitation_type",
-        "Precipitation Type",
-        None,
-        None,
-        None,
-        "weather-rainy",
-        EVENT_SKY_DATA,
-        False,
-        False
-    ],
-    [
-        "rain_start_time",
-        "Last Rain start",
-        None,
-        None,
-        DEVICE_CLASS_TIMESTAMP,
-        "clock-outline",
-        EVENT_SKY_DATA,
-        False,
-        False
-    ],
-    [
-        "air_density",
-        "Air Density",
-        "kg/m^3",
-        "lb/ft^3",
-        None,
-        "air-filter",
-        EVENT_AIR_DATA,
-        False,
-        False
-    ],
-    [
-        "dewpoint",
-        "Dew Point",
-        "˚C",
-        "˚F",
-        DEVICE_CLASS_TEMPERATURE,
-        None,
-        EVENT_AIR_DATA,
-        True,
-        True
-    ],
-    ["rain_rate", "Rain Rate", "mm/h", "in/h", None, "weather-pouring", EVENT_SKY_DATA, True, False],
-    ["uptime", "Uptime", None, None, None, "clock-outline", EVENT_HUB_STATUS, False, False],
-    [
-        "feelslike",
-        "Feels Like Temperature",
-        "˚C",
-        "˚F",
-        DEVICE_CLASS_TEMPERATURE,
-        None,
-        EVENT_AIR_DATA,
-        False,
-        False
-    ],
-    ["visibility", "Visibility", "km", "nmi", None, "eye", EVENT_AIR_DATA, False, False],
-    [
-        "wetbulb",
-        "Wet Bulb Temperature",
-        "˚C",
-        "˚F",
-        DEVICE_CLASS_TEMPERATURE,
-        None,
-        EVENT_AIR_DATA,
-        False,
-        False
-    ],
-    [
-        "wbgt",
-        "Wet Bulb Globe Temperature",
-        "˚C",
-        "˚F",
-        DEVICE_CLASS_TEMPERATURE,
-        None,
-        EVENT_AIR_DATA,
-        False,
-        False
-    ],
-    [
-        "delta_t",
-        "Delta T",
-        "˚C",
-        "˚F",
-        DEVICE_CLASS_TEMPERATURE,
-        None,
-        EVENT_AIR_DATA,
-        False,
-        False
-    ],
-    [
-        "dewpoint_description",
-        "Dewpoint Comfort Level",
-        None,
-        None,
-        None,
-        "text-box-outline",
-        EVENT_AIR_DATA,
-        False,
-        False
-    ],
-    [
-        "temperature_description",
-        "Temperature Level",
-        None,
-        None,
-        None,
-        "text-box-outline",
-        EVENT_AIR_DATA,
-        False,
-        False
-    ],
-    [
-        "uv_description",
-        "UV Level",
-        None,
-        None,
-        None,
-        "text-box-outline",
-        EVENT_SKY_DATA,
-        False,
-        False
-    ],
-    [
-        "beaufort",
-        "Beaufort Scale",
-        None,
-        None,
-        None,
-        "tailwind",
-        EVENT_SKY_DATA,
-        False,
-        False
-    ],
-    [FORECAST_ENTITY, "Weather", None, None, None, "chart-box-outline", EVENT_FORECAST, False, False],
-]
-
-SENSOR_ID = 0
-SENSOR_NAME = 1
-SENSOR_UNIT_M = 2
-SENSOR_UNIT_I = 3
-SENSOR_CLASS = 4
-SENSOR_ICON = 5
-SENSOR_DEVICE = 6
-SENSOR_EXTRA_ATT = 7
-SENSOR_SHOW_MIN_ATT = 8
+ZAMBRETTI_MIN_PRESSURE = 960
+ZAMBRETTI_MAX_PRESSURE = 1060
 
 CONDITION_CLASSES = {
     "clear-night": ["clear-night"],

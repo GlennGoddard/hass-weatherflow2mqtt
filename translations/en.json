@@ -60,7 +60,7 @@
         "chilly": "Chilly",
         "cold": "Cold",
         "freezing": "Freezing",
-        "fridged": "Fridged",
+        "fridged": "Frigid",
         "undefined": "Undefined"
     },
     "uv": {
@@ -76,5 +76,42 @@
         "rain": "Rain",
         "hail": "Hail",
         "heavy-rain": "Heavy Rain"
+    },
+    "rain_intensity": {
+        "NONE": "None",
+        "VERYLIGHT": "Very Light",
+        "LIGHT": "Light",
+        "MODERATE": "Moderate",
+        "HEAVY": "Heavy",
+        "VERYHEAVY": "Very Heavy",
+        "EXTREME": "Extreme"
+    },
+    "zambretti": {
+        "A": "Settled fine weather",
+        "B": "Fine weather",
+        "C": "Becoming fine",
+        "D": "Fine, becoming less settled",
+        "E": "Fine, possibly showers",
+        "F": "Fairly fine, improving",
+        "G": "Fairly fine, possibly showers early",
+        "H": "Fairly fine, showers later",
+        "I": "Showery early, improving",
+        "J": "Changeable, improving",
+        "K": "Fairly fine, showers likely",
+        "L": "Rather unsettled, clearing later",
+        "M": "Unsettled, probably improving",
+        "N": "Showery, bright intervals",
+        "O": "Showery, becoming unsettled",
+        "P": "Changeable, some rain",
+        "Q": "Unsettled, short fine intervals",
+        "R": "Unsettled, rain later",
+        "S": "Unsettled, rain at times",
+        "T": "Very unsettled, finer at times",
+        "U": "Rain at times, worse later",
+        "V": "Rain at times, becoming very unsettled",
+        "W": "Rain at frequent intervals",
+        "X": "Very unsettled, rain",
+        "Y": "Stormy, possibly improving",
+        "Z": "Stormy, much rain"
     }
 }

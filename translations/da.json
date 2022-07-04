@@ -76,5 +76,42 @@
         "rain": "Regn",
         "hail": "Hagl",
         "heavy-rain": "Kraftig regn"
+    },
+    "rain_intensity": {
+        "NONE": "Ingen",
+        "VERYLIGHT": "Meget Let",
+        "LIGHT": "Let",
+        "MODERATE": "Moderat",
+        "HEAVY": "Kraftig",
+        "VERYHEAVY": "Meget Kraftig",
+        "EXTREME": "Ekstrem"
+    },
+    "zambretti": {
+        "A": "Stabilt fint vejr",
+        "B": "Fint vejr",
+        "C": "Opklarende, bliver fint",
+        "D": "Fint. Bliver mere ustabilt",
+        "E": "Fint, med mulighed for lette byger",
+        "F": "Opholdsvejr. Bedre vejr senere",
+        "G": "Opholdsvejr. Mulighed for lette byger senere",
+        "H": "Opholdsvejr. Regn senere",
+        "I": "Tidlig lette regnbyer, bedre senere",
+        "J": "Vekslende vejr, bliver bedre",
+        "K": "Rimeligt fint vejr, mulighed for byger senere",
+        "L": "Temmelig ustabilt vejr, klarer op senere",
+        "M": "Ustabilt, bedres formentlig",
+        "N": "Byger, med jævne intervaller",
+        "O": "Byger, bliver mere ustabilt",
+        "P": "Foranderligt, nogen regn",
+        "Q": "Byger, med små korte intervaller",
+        "R": "Ustabilt, regn senere",
+        "S": "Ustabilt, regn med jævne mellemrum",
+        "T": "Meget ustabilt, men mulighed for opholdsvejr",
+        "U": "Regnbyger, bliver mere ustabilt",
+        "V": "Regnbyer, bliver meget ustabilt",
+        "W": "Regn med jævne mellemrum",
+        "X": "Meget ustabilt, regn",
+        "Y": "Storm, bliver muligvis bedre",
+        "Z": "Storm, megen regn"
     }
 }
