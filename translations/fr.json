@@ -115,19 +115,19 @@
         "Z": "Orageux, beaucoup de pluie"
     },
     "current_con": {
-        "lightning-rainy": "Lightning & Rain",
-        "lightning": "Lightning",
-        "hail": "Hail",
-        "pouring": "Pouring Rain",
-        "snowy-rainy": "Snow & Rain",
-        "rainy": "Rain",
-        "windy-variant": "Wind & Rain",
-        "windy": "Windy",
-        "fog": "Fog",
-        "snowy": "Snow",
-        "cloudy": "Cloudy",
-        "partycloudy": "Partly Cloudy",
-        "sunny": "Sunny",
-        "clear-night": "Clear Night"
+        "lightning-rainy": "Eclair & Pluie",
+        "lightning": "Eclair",
+        "hail": "Grele",
+        "pouring": "Pluie battante",
+        "snowy-rainy": "Neige & Pluie",
+        "rainy": "Pluie",
+        "windy-variant": "Vent & Pluie",
+        "windy": "Vente",
+        "fog": "Brouillard",
+        "snowy": "Neige",
+        "cloudy": "Nuageux",
+        "partycloudy": "Partiellement Nuageux",
+        "sunny": "Ensoleille",
+        "clear-night": "Nuit Claire"
     }
 }
