@@ -115,19 +115,19 @@
         "Z": "Stürmisch, viel Regen"
     },
     "current_con": {
-        "lightning-rainy": "Lightning & Rain",
-        "lightning": "Lightning",
-        "hail": "Hail",
-        "pouring": "Pouring Rain",
-        "snowy-rainy": "Snow & Rain",
-        "rainy": "Rain",
-        "windy-variant": "Wind & Rain",
-        "windy": "Windy",
-        "fog": "Fog",
-        "snowy": "Snow",
-        "cloudy": "Cloudy",
-        "partycloudy": "Partly Cloudy",
-        "sunny": "Sunny",
-        "clear-night": "Clear Night"
+        "lightning-rainy": "Blitz & Regen",
+        "lightning": "Blitz",
+        "hail": "Hagel",
+        "pouring": "Starkregen",
+        "snowy-rainy": "Schnee & Regen",
+        "rainy": "Regen",
+        "windy-variant": "Wind & Regen",
+        "windy": "Windig",
+        "fog": "Nebel",
+        "snowy": "Schnee",
+        "cloudy": "Bewölkt",
+        "partycloudy": "Teilweise Bewölkt",
+        "sunny": "Sonnig",
+        "clear-night": "Klare Nacht"
     }
 }
