@@ -115,19 +115,19 @@
         "Z": "Storm, megen regn"
     },
     "current_con": {
-        "lightning-rainy": "Lightning & Rain",
-        "lightning": "Lightning",
-        "hail": "Hail",
-        "pouring": "Pouring Rain",
-        "snowy-rainy": "Snow & Rain",
-        "rainy": "Rain",
-        "windy-variant": "Wind & Rain",
-        "windy": "Windy",
-        "fog": "Fog",
-        "snowy": "Snow",
-        "cloudy": "Cloudy",
-        "partycloudy": "Partly Cloudy",
-        "sunny": "Sunny",
-        "clear-night": "Clear Night"
+        "lightning-rainy": "Lyn & Regn",
+        "lightning": "Lyn",
+        "hail": "Hagl",
+        "pouring": "Væltede Regn",
+        "snowy-rainy": "Sne & Regn",
+        "rainy": "Regn",
+        "windy-variant": "Vind & Regn",
+        "windy": "Blæsende",
+        "fog": "Tåge",
+        "snowy": "Sne",
+        "cloudy": "Skyet",
+        "partycloudy": "Delvist Overskyet",
+        "sunny": "Solrig",
+        "clear-night": "Klart Nat"
     }
 }
