@@ -1181,42 +1181,47 @@ class ConversionFunctions:
         # return the standard weather conditions as used by Home Assistant
         return current
 
-'''    def current_conditions_txt(self, current_conditions):
-        # Clear Night, Cloudy, Fog, Hail, Lightning, Lightning & Rain, Partly Cloudy, Pouring Rain, Rain, Snow, Snow & Rain, Sunny, Windy, Wind & Rain, exceptional (not used)
-        # Need translations
-        # Add input blurb
+    def current_conditions_txt(self, current_conditions):
+        """ Return local current conditions readable text in translated language.
+        Input:
+            current_conditions
+        Where:
+            current_conditons is the current state of the weather returned locally in Home Assistant expected input format
+        """
+
+        if (
+            current_conditions is None
+        ):
+            return "clear-night"
+        # Exceptional not used here
 
         if (current_conditions = "lightning-rainy"):
-            current = "Lightning & Rain"
+            return self.translations["current_con"]["lightning-rainy"]
         elif (current_conditions = "lightning"):
-            current = "Lightning"
+            return self.translations["current_con"]["lightning"]
         elif (current_conditions = "hail"):
-            current = "Hail"
+            return self.translations["current_con"]["hail"]
         elif (current_conditions = "pouring"):
-            current = "Pouring Rain"
+            return self.translations["current_con"]["pouring"]
         elif (current_conditions = "snowy-rainy"):
-            current = "Snow & Rain"
+            return self.translations["current_con"]["snowy-rainy"]
         elif (current_conditions = "rainy"):
-            current = "Rain"
+            return self.translations["current_con"]["rainy"]
         elif (current_conditions = "windy-variant"):
-            current = "Wind & Rain"
+            return self.translations["current_con"]["windy-variant"]
         elif (current_conditions = "windy"):
-            current = "Windy"
+            return self.translations["current_con"]["windy"]
         elif (current_conditions = "fog"):
-            current = "Fog"
+            return self.translations["current_con"]["fog"]
         elif (current_conditions = "snowy"):
-            current = "Snow"
+            return self.translations["current_con"]["snowy"]
         elif (current_conditions = "cloudy"):
-            current = "Cloudy"
+            return self.translations["current_con"]["cloudy"]
         elif (current_conditions = "partlycloudy"):
-            current = "Partly Cloudy"
+            return self.translations["current_con"]["partlycloudy"]
         elif (current_conditions = "sunny"):
-            current = "Sunny"
-        elif (current_conditions = "clear-night"):
-            current = "Clear Night"
-        else
-            current = "Unknown"
+            return self.translations["current_con"]["sunny"]
+        else:
+            return self.translations["current_con"]["clear-night"]
 
-        # return the human readable weather conditions
-        return current
-'''
+        return self.translations["current_con"]["clear-night"]
