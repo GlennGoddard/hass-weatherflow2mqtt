@@ -113,5 +113,21 @@
         "X": "Very unsettled, rain",
         "Y": "Stormy, possibly improving",
         "Z": "Stormy, much rain"
+    },
+    "current_con": {
+        "lightning-rainy": "Lightning & Rain",
+        "lightning": "Lightning",
+        "hail": "Hail",
+        "pouring": "Pouring Rain",
+        "snowy-rainy": "Snow & Rain",
+        "rainy": "Rain",
+        "windy-variant": "Wind & Rain",
+        "windy": "Windy",
+        "fog": "Fog",
+        "snowy": "Snow",
+        "cloudy": "Cloudy",
+        "partycloudy": "Partly Cloudy",
+        "sunny": "Sunny",
+        "clear-night": "Clear Night"
     }
 }
