@@ -113,5 +113,21 @@
         "X": "Erg onstabiel, regen",
         "Y": "Stormachtig, mogelijk verbeterend",
         "Z": "Stormachtig, veel regen"
+    },
+    "current_con": {
+        "lightning-rainy": "Lightning & Rain",
+        "lightning": "Lightning",
+        "hail": "Hail",
+        "pouring": "Pouring Rain",
+        "snowy-rainy": "Snow & Rain",
+        "rainy": "Rain",
+        "windy-variant": "Wind & Rain",
+        "windy": "Windy",
+        "fog": "Fog",
+        "snowy": "Snow",
+        "cloudy": "Cloudy",
+        "partycloudy": "Partly Cloudy",
+        "sunny": "Sunny",
+        "clear-night": "Clear Night"
     }
 }
