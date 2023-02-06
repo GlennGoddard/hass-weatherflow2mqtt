@@ -115,19 +115,19 @@
         "Z": "Stormachtig, veel regen"
     },
     "current_con": {
-        "lightning-rainy": "Lightning & Rain",
-        "lightning": "Lightning",
-        "hail": "Hail",
-        "pouring": "Pouring Rain",
-        "snowy-rainy": "Snow & Rain",
-        "rainy": "Rain",
-        "windy-variant": "Wind & Rain",
-        "windy": "Windy",
-        "fog": "Fog",
-        "snowy": "Snow",
-        "cloudy": "Cloudy",
-        "partycloudy": "Partly Cloudy",
-        "sunny": "Sunny",
-        "clear-night": "Clear Night"
+        "lightning-rainy": "Bliksem & Regen",
+        "lightning": "Bliksem",
+        "hail": "Hagel",
+        "pouring": "Overvloedige Regen",
+        "snowy-rainy": "Sneeuw & Regen",
+        "rainy": "Regen",
+        "windy-variant": "Wind & Regen",
+        "windy": "Winderig",
+        "fog": "Mist",
+        "snowy": "Sneeuw",
+        "cloudy": "Bewolkt",
+        "partycloudy": "Deels Bewolkt",
+        "sunny": "Zonnig",
+        "clear-night": "Helder Nacht"
     }
 }
